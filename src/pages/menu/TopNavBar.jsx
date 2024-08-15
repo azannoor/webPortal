@@ -1,0 +1,51 @@
+import React from 'react';
+import { AppBar, Toolbar, IconButton, Stack, Typography, Tooltip } from "@mui/material";
+import SearchForm from "./SearchForm";
+import Email from "./Email";
+import Notification from "./Notification";
+import Profile from "./Profile";
+import CurrentDate from "./CurrentDate";
+
+const TopNavbar = ({ toggleActive }) => {
+  return (
+    <AppBar
+      color="inherit"
+      sx={{
+        backgroundColor: "#fff",
+        boxShadow: "0px 4px 20px rgba(47, 143, 232, 0.07)",
+        py: "6px",
+        mb: "30px",
+        position: "sticky",
+      }}
+    >
+      <Toolbar>
+        <Tooltip title="Hide/Show" arrow>
+          <IconButton size="small" edge="start" color="inherit" onClick={toggleActive}>
+            <i className="ri-align-left"></i>
+          </IconButton>
+        </Tooltip>
+
+        {/* Search form */}
+        <SearchForm />
+
+        <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
+
+        <Stack direction="row" spacing={2}>
+          {/* Current Date */}
+          <CurrentDate />
+
+          {/* Email Notifications */}
+          <Email />
+
+          {/* General Notifications */}
+          <Notification />
+
+          {/* Profile */}
+          <Profile />
+        </Stack>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default TopNavbar;
